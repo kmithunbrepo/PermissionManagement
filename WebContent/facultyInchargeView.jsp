@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Student Home</title>
+<link rel="stylesheet" href="/PermissionManagement/WebContent/css/studHomeStyle.css">
 </head>
 <body>
 <%
@@ -17,12 +18,15 @@
 		response.sendRedirect("loginView.jsp");
 	}
 %>
-Welcome <%=session.getAttribute("email") %> in the home page 
 <br/>
-Website is underdevelopment...
-
-<form action="Logout">
-	<input type="submit" value="Logout"/>
-</form>
+<br/>
+<jsp:include page="header.jsp"></jsp:include>
+<div style="padding: 5px;float:center">
+		<ul class="nav">
+   			<li><a href="${pageContext.request.contextPath}/raisePermission.jsp">Faculty Incharge</a></li>
+   			<li><a href="${pageContext.request.contextPath}/studentRequestsView.jsp">Faculty</a></li>
+		</ul>
+	</div> 
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

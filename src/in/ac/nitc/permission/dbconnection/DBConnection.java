@@ -15,7 +15,7 @@ public class DBConnection {
 	private String mysqlpass="kumar";
 	
 	//To get database connection 
-	public Connection getConnection() {
+	public Connection getDBConnection() {
 		if(con==null) {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,7 +29,7 @@ public class DBConnection {
 	}
 	
 	//To close database Connection
-	public void closeConnection() {
+	public void closeDBConnection() {
 		if(con!=null) {
 			try {
 				con.close();

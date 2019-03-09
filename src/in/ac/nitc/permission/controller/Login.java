@@ -20,24 +20,56 @@ import in.ac.nitc.permission.dbconnection.DBConnection;
 public class Login extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* Fetching data from Login form */
 		String email=request.getParameter("email");
 		String pass=request.getParameter("pass");
-		//LoginDao dao=new LoginDao();
+		
+		//Creating database connection
 		DBConnection dbCon=new DBConnection();
-		Connection con=dbCon.getConnection();
-		String query="";
+		Connection con=dbCon.getDBConnection();
+		String query="select * from User where email=? and password=?";
 		PreparedStatement st;
 		ResultSet rs;
 		try {
-			query="select * from User where email=? and password=?";
 			st=con.prepareStatement(query);
 			st.setString(1, email);
 			st.setString(2, pass);
 			rs=st.executeQuery();
+			//check for user authentication
 			if(rs.next()) {
-				HttpSession session=request.getSession();	
+					
+				String name=rs.getString("name");
+				int user_id = rs.getInt("user_id");
+				String type = rs.getString("type");
+				String dept=rs.getString("dept");
+				//Setting session values for authorised user
+				HttpSession session=request.getSession();
+				session.setAttribute("user_id", user_id);
 				session.setAttribute("email", email);
-				response.sendRedirect("studentHomeView.jsp");
+				session.setAttribute("name", name);
+				session.setAttribute("dept", dept);
+				
+				//If the user is faculty incharge then show faculty incharge home page
+				if(type.equalsIgnoreCase("faculty_incharge")) {
+					response.sendRedirect("facultyInchargeView.jsp");
+				}
+				else{
+					//User is student then fetch roll no from Student table for future references
+					String rollno=null;
+					query="select * from Student where user_id=?";
+					st=con.prepareStatement(query);
+					st.setInt(1, user_id);
+					rs=st.executeQuery();
+					if(rs.next()) {
+						rollno=rs.getString("rollno");
+						session.setAttribute("rollno", rollno);
+					}
+					if(type.equalsIgnoreCase("student"))
+						response.sendRedirect("studentView.jsp");
+					else if(type.equalsIgnoreCase("student_lab_admin"))
+						response.sendRedirect("studentLabAdminView.jsp");
+				}
+				
 			}
 			else {
 				PrintWriter out=response.getWriter();
@@ -53,7 +85,7 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 		finally {
-			dbCon.closeConnection();
+			dbCon.closeDBConnection();
 		}
 		
 	}

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import in.ac.nitc.permission.dbconnection.DBConnection;
 
 
-@WebServlet("/Logout")
+@WebServlet("/logout")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -19,7 +19,7 @@ public class Logout extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.removeAttribute("email");
 		session.invalidate();
-		response.sendRedirect("loginView.jsp");
+		response.sendRedirect("index.jsp");
 	}
 
 	
