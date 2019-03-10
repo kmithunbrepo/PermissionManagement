@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student Lab Admin Home</title>
+<title>Student Home</title>
 <link rel="stylesheet" href="/PermissionManagement/WebContent/css/studHomeStyle.css">
 </head>
 <body>
@@ -23,9 +23,8 @@
 <jsp:include page="header.jsp"></jsp:include>
 <div style="padding: 5px;float:center">
 		<ul class="nav">
-   			<li><a href="${pageContext.request.contextPath}/raisePermissionView.jsp">Raise Permission</a></li>
-   			<li><a href="${pageContext.request.contextPath}/studentRequestsView.jsp">View Raised Permissions</a></li>
-   			<li><a href="${pageContext.request.contextPath}/adminResponsibilitiesView.jsp">Admin Responsibilities</a></li>
+   			<li><a href="${pageContext.request.contextPath}/raisePermission.jsp">Faculty Incharge</a></li>
+   			<li><a href="${pageContext.request.contextPath}/studentRequestsView.jsp">Faculty</a></li>
 		</ul>
 	</div> 
 <jsp:include page="footer.jsp"></jsp:include>

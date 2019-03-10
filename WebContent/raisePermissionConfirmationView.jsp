@@ -19,8 +19,12 @@
 	String department =request.getParameter("department");
 	String lab =request.getParameter("lab");
 	String maxAudience =request.getParameter("maxAudience");
-	String eventStartDateTime =request.getParameter("eventStartDateTime");
-	String eventEndDateTime=request.getParameter("eventEndDateTime");
+	String eventStartDate =request.getParameter("eventStartDate");
+	String eventStartTime =request.getParameter("eventStartTime");
+
+	String eventEndDate=request.getParameter("eventEndDate");
+	String eventEndTime =request.getParameter("eventEndTime");
+
 	String eventPurpose =request.getParameter("eventPurpose");
 	String undertaking =request.getParameter("undertaking");
 	
@@ -29,15 +33,19 @@
 		session.setAttribute("department", department);
 		session.setAttribute("lab", lab);
 		session.setAttribute("maxAudience", maxAudience);
-		session.setAttribute("eventStartDateTime", eventStartDateTime);
-		session.setAttribute("eventEndDateTime", eventEndDateTime);
+		session.setAttribute("eventStartDate", eventStartDate);
+		session.setAttribute("eventStartTime", eventStartTime);
+
+		session.setAttribute("eventEndDate", eventEndDate);
+		session.setAttribute("eventEndTime", eventEndTime);
+
 		session.setAttribute("eventPurpose", eventPurpose);
 		
 	%>
 	
 		<div class="container">
 			<div class="row">
-				<label> Name: <%= name %></label>
+				<label>Name: <%=name %></label>
 			</div>
 			
 			<div class="row">
@@ -57,11 +65,17 @@
 			</div>	
 			
 			<div class="row">
-				<label>Event Start Date and Time: <%= eventStartDateTime %></label>
+				<label>Event Start Date : <%= eventStartDate %></label>
 			</div>
 			
 			<div class="row">
-				<label>Event End Date and Time: <%= eventEndDateTime %></label>
+				<label>Event Start Time: <%= eventStartTime %></label>
+			</div>
+			<div class="row">
+				<label>Event End Date : <%= eventEndDate %></label>
+			</div>
+			<div class="row">
+				<label>Event End Time: <%= eventEndTime %></label>
 			</div>
 			
 			<div class="row">
@@ -74,8 +88,8 @@
 			
 			
 			<div class="row">
-					<a  class="btn btn-outline-warning" href="SavePermission" role="button">Confirm</a>
-					<a class="btn btn-outline-dark" href="raisePermissionApplication.jsp" role="button">Back</a>
+					<a  class="btn btn-outline-warning" href="raisePermission" role="button">Confirm</a>
+					<a class="btn btn-outline-dark" href="raisePermissionView.jsp" role="button">Back</a>
 			</div>
 			
 		</div>

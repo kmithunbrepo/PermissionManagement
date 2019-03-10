@@ -14,8 +14,9 @@
     <div id = "header">
 
       <div id="logo">
+      <img src = "img/nitclogo.png" alt = "image not avilable" style = "width:4%;height :5%">
           <h1><a href="index.jsp" id="logo_text1">NITC<span id="logo_text2"> Permission Flow Management System</span></a></h1>
-          &nbsp;&nbsp;<img src = "img/nitclogo.png" alt = "image not avilable" style = "width:4%;height :5%">
+          &nbsp;&nbsp;
         </div>
     
 

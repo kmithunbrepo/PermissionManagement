@@ -31,7 +31,7 @@ th,td{
   </tr>
   <%
     DBConnection dbCon=new DBConnection();
-	Connection con=dbCon.getConnection();
+	Connection con=dbCon.getDBConnection();
 	String query="";
 	ResultSet rs;
 	try {
@@ -68,7 +68,7 @@ th,td{
 			  }
 	          finally
 	          {
-	        	  dbCon.closeConnection();
+	        	  dbCon.closeDBConnection();
 	          }
   %>
 

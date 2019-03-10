@@ -31,11 +31,11 @@ th,td{
   </tr>
   <%
     DBConnection dbCon=new DBConnection();
-	Connection con=dbCon.getConnection();
+	Connection con=dbCon.getDBConnection();
 	String query="";
 	ResultSet rs;
 	try {
-		query="select * from  Permission order by start_datetime";
+		query="select * from  Permission where status='approved' order by start_datetime";
 		Statement st = con.createStatement();
 		rs=st.executeQuery(query);
 		while(rs.next()) {
@@ -65,7 +65,7 @@ th,td{
 			  }
 	          finally
 	          {
-	        	  dbCon.closeConnection();
+	        	  dbCon.closeDBConnection();
 	          }
   %>
 

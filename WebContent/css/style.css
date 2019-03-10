@@ -1,15 +1,17 @@
-body
-{ 
-  background:transparent url(logo5.jpeg);
+*{
+    box-sizing: border-box;
 }
 
-* {
-    box-sizing: border-box;
+body
+{ 
+  background:transparent url(../img/homebg.jpeg);
 }
 
 #logo 
 {
-  margin: 50px 0 25px 50px;
+  margin-left: 10%;
+  margin-right:10%;
+  content-align:center;
   
 }
 

@@ -21,7 +21,7 @@ public class RaisePermission extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		
+				
 		try {
 			
 			String studentName=(String)session.getAttribute("name");
@@ -29,18 +29,15 @@ public class RaisePermission extends HttpServlet {
 			String department=(String)session.getAttribute("department");
 			String lab=(String)session.getAttribute("lab");
 			String maxAudience=(String)session.getAttribute("maxAudience");
-			String eventStartDateTime=(String)session.getAttribute("eventStartDateTime");
-			String eventEndDateTime=(String)session.getAttribute("eventEndDateTime");
+			String eventStartDate=(String)session.getAttribute("eventStartDate");
+			String eventStartTime=(String)session.getAttribute("eventStartTime");
+			String eventEndDate=(String)session.getAttribute("eventEndDate");
+			String eventEndTime=(String)session.getAttribute("eventEndTime");
 			String eventPurpose=(String)session.getAttribute("eventPurpose");
 			
 			//modifying data to insert into databases
-			eventStartDateTime=eventStartDateTime.replaceAll("T"," ");
-			eventEndDateTime=eventEndDateTime.replaceAll("T"," ");
-			eventStartDateTime+=":00";
-			eventEndDateTime+=":00";
-			
-			
-			
+			String eventStartDateTime=eventStartDate+" "+eventStartTime+":00";
+			String eventEndDateTime=eventEndDate+" "+eventEndTime+":00";	
 			
 			System.out.println(eventStartDateTime);
 			System.out.println(eventEndDateTime);
@@ -59,7 +56,6 @@ public class RaisePermission extends HttpServlet {
 			
 			PermissionDataDao dao=new PermissionDataDao();
 			boolean result=dao.insertPermissionData(pd);
-			
 			
 			if(!result){
 				throw new Exception("data not inserted in Permission table");
