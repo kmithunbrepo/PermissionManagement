@@ -112,7 +112,7 @@ CREATE TABLE `Permission` (
 
 LOCK TABLES `Permission` WRITE;
 /*!40000 ALTER TABLE `Permission` DISABLE KEYS */;
-INSERT INTO `Permission` VALUES (1,'2019-04-11 12:30:00','2019-04-11 04:30:00','for  event','M170364CA','Lokeshvar','2019-03-08 22:22:18','2019-03-09 14:35:30','approved',1,22,'cse'),(2,'2019-04-10 11:00:00','2019-04-10 12:00:00','for coding comp','M170348CA','Mithun','2019-03-08 23:10:01','2019-03-09 14:36:17','declined',1,22,'cse'),(3,'2019-03-15 00:00:00','2019-03-16 00:00:00','for workshop','m170348ca','mithun kumar','2019-03-13 00:00:00','2019-03-23 00:00:00','approved',1,50,'cse'),(4,'2019-03-15 12:00:00','2019-03-15 02:00:00','Coding with senior','m170345ca','Rupesh Kumar Sahu','2019-03-09 14:54:29','2019-03-09 15:02:44','approved',2,36,'me');
+INSERT INTO `Permission` VALUES (1,'2019-03-11 12:00:00','2019-03-11 16:00:00','Get in touch with Linux','m170348ca','mithun kumar','2019-03-10 15:37:36','2019-03-10 16:05:59','approved',1,30,'cse'),(2,'2019-03-12 11:00:00','2019-03-12 14:00:00','Learn Basic of C++','m170364ca','lokeshvar kumar','2019-03-10 15:39:04',NULL,'lab_admin',2,35,'cse'),(3,'2019-03-16 14:00:00','2019-03-16 17:00:00','Blockchain Introduction','m170345ca','rupesh kumar sahu','2019-03-10 15:40:20',NULL,'lab_admin',1,39,'cse'),(4,'2019-03-17 13:00:00','2019-03-17 15:00:00','Android Workshop','m170564ca','sanjib kumar giri','2019-03-10 15:42:30','2019-03-10 16:08:10','pending',2,23,'cse');
 /*!40000 ALTER TABLE `Permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-09 19:25:53
+-- Dump completed on 2019-03-10 16:14:35

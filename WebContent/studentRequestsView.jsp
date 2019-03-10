@@ -17,8 +17,18 @@ th,td{
 </style>
 </head>
 <body>
- <jsp:include page="header.jsp"></jsp:include>
- 
+<%
+	response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+	//response.setHeader("Pragma", "no-cache");
+	//response.setHeader("Expires", "0");
+	
+	if(session.getAttribute("email")==null){
+		response.sendRedirect("loginView.jsp");
+	}
+%>
+<br/>
+<br/>
+<jsp:include page="header.jsp"></jsp:include> 
 <h1>Your Requested Events</h1>
 
  <table cellspacing="20">
@@ -28,6 +38,7 @@ th,td{
     <th>Start Date & Time</th>
     <th>End Date & Time</th>
     <th>No of Audience</th>
+    <th>Status</th>
   </tr>
   <%
     DBConnection dbCon=new DBConnection();
@@ -59,6 +70,7 @@ th,td{
 			    <td><%=rs.getString("start_datetime") %></td>
 			    <td><%=rs.getString("end_datetime") %></td>
 			    <td><%=rs.getInt("max_audience") %></td>
+			    <td><%=rs.getString("status") %>
   </tr>
   
    <%

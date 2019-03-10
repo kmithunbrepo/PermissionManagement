@@ -1,4 +1,4 @@
-<%@page import="in.ac.nitc.permission.controller.*"%>
+<%@page import="in.ac.nitc.permission.model.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,7 +17,21 @@ th,td{
 }
 </style>
 </head>
-<body style="background-color:powderblue;">
+<body>
+<%
+	response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+	//response.setHeader("Pragma", "no-cache");
+	//response.setHeader("Expires", "0");
+	
+	if(session.getAttribute("email")==null){
+		response.sendRedirect("loginView.jsp");
+	}
+%>
+<br/>
+<br/>
+<jsp:include page="header.jsp"></jsp:include>
+<br/>
+<br/>
 
 <h1  style="text-align:center;"> Admin view of Raised Permission</h1>
  <table cellspacing="20">
@@ -37,28 +51,28 @@ th,td{
   </tr>
   
 <%
-	ArrayList<PermissionR> list=(ArrayList<PermissionR>)request.getAttribute("permission_list");
+	ArrayList<Permission> list=(ArrayList<Permission>)request.getAttribute("permission_list");
 
-	for(PermissionR obj : list)
+	for(Permission obj : list)
 	{
 		//out.println(obj);
 		%>
 		
   <tr style="margin: 5px">
-    <td><%= obj.getEvent_id() %></td>
-    <td><%= obj.getStart_datetime() %></td>
-    <td><%=obj.getEnd_datetime() %></td>
+    <td><%= obj.getEventId() %></td>
+    <td><%= obj.getStartDatetime() %></td>
+    <td><%=obj.getEndDatetime() %></td>
     <td><%=obj.getPurpose() %></td>
-    <td><%=obj.getStudent_rollno() %></td>
-    <td><%=obj.getStudent_name()  %></td>
-    <td><%=obj.getRaised_datetime()  %></td>
-   <td><%=obj.getResponse_datetime()  %></td>
+    <td><%=obj.getStudentRollno() %></td>
+    <td><%=obj.getStudentName()  %></td>
+    <td><%=obj.getRaisedDatetime()  %></td>
+   <td><%=obj.getResponseDatetime()  %></td>
     <td><%=obj.getStatus()  %></td>
-    <td><%=obj.getLab_id()  %></td>
-    <td><%=obj.getMax_audiance()  %></td>
+    <td><%=obj.getLabId()  %></td>
+    <td><%=obj.getMaxAudience()  %></td>
     <td>
     <form action="updateStatus">
-	<input type="hidden" name="submit_id" value="<%=obj.getEvent_id()%>" />
+	<input type="hidden" name="submit_id" value="<%=obj.getEventId()%>" />
 	<input type="hidden" name="change_status" value="faculty_incharge" />
 	<input type="submit"  value="Forward">
 	</form> 
@@ -70,10 +84,9 @@ th,td{
 
 %>
 </table>
-<h1>
-<div >
-    <a href="index.jsp">Return to Main Menu</a>
-</div>
-</h1>
+	<div >
+	    <h1><a href="adminResponsibilitiesView.jsp">Back</a></h1>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

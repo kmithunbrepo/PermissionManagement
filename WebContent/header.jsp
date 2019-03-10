@@ -24,6 +24,8 @@
         <ul id="menu">
           <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/events.jsp">Events Requested</a></li>
+          <li><a href="${pageContext.request.contextPath}/venueDetailsView.jsp">Venue Details</a></li>
+          <li><a href="contact.jsp">Contact Us</a></li>
           <%
 			if(session.getAttribute("email")==null){
 			%>
@@ -33,13 +35,18 @@
 			else
 			{
 			%>
-			<li style="color:cyan;">Welcome <%=session.getAttribute("name") %></li>
+				<%if(session.getAttribute("type").equals("student")){ %>
+					<li><a href="studentView.jsp" style="color:Cyan;"><%=session.getAttribute("name") %></a></li>
+				<%}else if(session.getAttribute("type").equals("student_lab_admin")){ %>
+					<li><a href="studentLabAdminView.jsp" style="color:Cyan;"><%=session.getAttribute("name") %></a></li>
+				<%}else if(session.getAttribute("type").equals("faculty_incharge")){ %>
+					<li><a href="facultyInchargeView.jsp" style="color:Cyan;"><%=session.getAttribute("name") %></a></li>
+				<%} %>
 			<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 			<%
 			}
 			%>
-   			<li><a href="${pageContext.request.contextPath}/venueDetailsView.jsp">Venue Details</a></li>
-          <li><a href="contact.jsp">Contact Us</a></li>
+   			
 
         </ul>
 

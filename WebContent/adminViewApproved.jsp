@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="in.ac.nitc.permission.controller.*"%>
+<%@page import="in.ac.nitc.permission.model.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -18,7 +18,21 @@ th,td{
 }
 </style>
 </head>
-<body style="background-color:powderblue;">
+<body>
+<%
+	response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+	//response.setHeader("Pragma", "no-cache");
+	//response.setHeader("Expires", "0");
+	
+	if(session.getAttribute("email")==null){
+		response.sendRedirect("loginView.jsp");
+	}
+%>
+<br/>
+<br/>
+<jsp:include page="header.jsp"></jsp:include>
+<br/>
+<br/>
 
 <h1 style="text-align:center;"> View of Approved Permission</h1>
  <table cellspacing="20">
@@ -37,25 +51,25 @@ th,td{
   </tr>
   
 <%
-	ArrayList<PermissionR> list=(ArrayList<PermissionR>)request.getAttribute("permission_list");
+	ArrayList<Permission> list=(ArrayList<Permission>)request.getAttribute("permission_list");
 
-	for(PermissionR obj : list)
+	for(Permission obj : list)
 	{
 		//out.println(obj);
 		%>
 		
   <tr style="margin: 5px">
-    <td><%= obj.getEvent_id() %></td>
-    <td><%= obj.getStart_datetime() %></td>
-    <td><%=obj.getEnd_datetime() %></td>
+    <td><%= obj.getEventId() %></td>
+    <td><%= obj.getStartDatetime() %></td>
+    <td><%=obj.getEndDatetime() %></td>
     <td><%=obj.getPurpose() %></td>
-    <td><%=obj.getStudent_rollno() %></td>
-    <td><%=obj.getStudent_name()  %></td>
-    <td><%=obj.getRaised_datetime()  %></td>
-    <td><%=obj.getResponse_datetime()  %></td>
+    <td><%=obj.getStudentRollno() %></td>
+    <td><%=obj.getStudentName()  %></td>
+    <td><%=obj.getRaisedDatetime()  %></td>
+    <td><%=obj.getResponseDatetime()  %></td>
     <td><%=obj.getStatus()  %></td>
-    <td><%=obj.getLab_id()  %></td>
-    <td><%=obj.getMax_audiance()  %></td>
+    <td><%=obj.getLabId()  %></td>
+    <td><%=obj.getMaxAudience()  %></td>
   </tr>
 <% 
 		out.println("\n");
@@ -84,5 +98,14 @@ th,td{
 
 %>
  -->
+	<div >
+		<%if(session.getAttribute("type").equals("student_lab_admin")){ %>
+		<h1><a href="adminResponsibilitiesView.jsp">Back</a></h1>
+		<%}else if(session.getAttribute("type").equals("faculty_incharge")){ %>
+		<h1><a href="facultyInchargeView.jsp">Back</a></h1>
+		<%} %>
+	    
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

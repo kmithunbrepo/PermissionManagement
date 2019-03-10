@@ -15,23 +15,27 @@ body {
 </head>
 <body>
 <%
-	
 	response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
 	//response.setHeader("Pragma", "no-cache");
 	//response.setHeader("Expires", "0");
-
+	
 	if(session.getAttribute("email")==null){
 		response.sendRedirect("loginView.jsp");
 	}
 %>
+<br/>
+<br/>
+<jsp:include page="header.jsp"></jsp:include>
+<br/>
+<br/>
+
 <h1>Welcome faculty index page</h1>
-<h4>
 	<form action="getAdmin">
-  <input type="radio" name="choice" value="faculty_incharge" checked> View Raised Permissions <br> 
-    <input type="radio" name="choice" value="pending"> View On-Hold Permissions <br> 
-    <input type="radio" name="choice" value="declined"> View Rejected Permissions <br> 
-  <input type="radio"  name="choice" value="approved">Approved permissions<br>
+  <input type="radio" name="choice" value="faculty_incharge" checked><b>View Raised Permissions</b> <br> 
+    <input type="radio" name="choice" value="pending"><b> View On-Hold Permissions</b> <br> 
+    <input type="radio" name="choice" value="declined"> <b>View Rejected Permissions</b> <br> 
+  <input type="radio"  name="choice" value="approved"><b>Approved permissions</b><br>
   <input type="submit">
-  </h4>
+  </form>
 </body>
 </html>

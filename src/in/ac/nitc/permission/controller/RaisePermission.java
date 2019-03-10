@@ -1,6 +1,8 @@
 package in.ac.nitc.permission.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +30,7 @@ public class RaisePermission extends HttpServlet {
 			String studentRollNumber=(String)session.getAttribute("rollNumber");
 			String department=(String)session.getAttribute("department");
 			String lab=(String)session.getAttribute("lab");
-			String maxAudience=(String)session.getAttribute("maxAudience");
+			int maxAudience=(int) session.getAttribute("maxAudience");
 			String eventStartDate=(String)session.getAttribute("eventStartDate");
 			String eventStartTime=(String)session.getAttribute("eventStartTime");
 			String eventEndDate=(String)session.getAttribute("eventEndDate");
@@ -45,23 +47,37 @@ public class RaisePermission extends HttpServlet {
 
 			Permission pd=new Permission();
 
-			pd.setDepartment(department);
-			pd.setEventEndDateTime(eventEndDateTime);
-			pd.setEventPurpose(eventPurpose);
-			pd.setEventStartDateTime(eventStartDateTime);
+			pd.setDept(department);
+			pd.setEndDatetime(eventEndDateTime);
+			pd.setPurpose(eventPurpose);
+			pd.setStartDatetime(eventStartDateTime);
 			pd.setLab(lab);
 			pd.setMaxAudience(maxAudience);
 			pd.setStudentName(studentName);
-			pd.setStudentRollNumber(studentRollNumber);
+			pd.setStudentRollno(studentRollNumber);
 			
 			PermissionDataDao dao=new PermissionDataDao();
 			boolean result=dao.insertPermissionData(pd);
 			
 			if(!result){
-				throw new Exception("data not inserted in Permission table");
+				PrintWriter out=response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Some Error Occured. Please try again');");
+				if(session.getAttribute("type").equals("student"))
+					out.println("location='studentView.jsp';");
+				else if(session.getAttribute("type").equals("student_lab_admin"))
+					out.println("location='studentLabAdminView.jsp';");
+				out.println("</script>");
 			}
 			else {
-				System.out.println("data successfully inserted in Permission table");
+				PrintWriter out=response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Permission Raised Successfully. Thank you!');");
+				if(session.getAttribute("type").equals("student"))
+					out.println("location='studentView.jsp';");
+				else if(session.getAttribute("type").equals("student_lab_admin"))
+					out.println("location='studentLabAdminView.jsp';");
+				out.println("</script>");
 			}
 		}
 		catch(Exception e){
@@ -69,14 +85,14 @@ public class RaisePermission extends HttpServlet {
 		}
 		finally {
 			
-			session.getAttribute("name");
-			session.getAttribute("rollNumber");
-			session.getAttribute("department");
-			session.getAttribute("lab");
-			session.getAttribute("maxAudience");
-			session.getAttribute("eventStartDateTime");
-			session.getAttribute("eventEndDateTime");
-			session.getAttribute("eventPurpose");
+			
+			session.removeAttribute("rollNumber");
+			session.removeAttribute("department");
+			session.removeAttribute("lab");
+			session.removeAttribute("maxAudience");
+			session.removeAttribute("eventStartDateTime");
+			session.removeAttribute("eventEndDateTime");
+			session.removeAttribute("eventPurpose");
 			
 		}
 	}

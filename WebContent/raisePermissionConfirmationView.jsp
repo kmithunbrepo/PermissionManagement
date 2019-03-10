@@ -9,8 +9,21 @@
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<%
+	response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+	//response.setHeader("Pragma", "no-cache");
+	//response.setHeader("Expires", "0");
 	
+	if(session.getAttribute("email")==null){
+		response.sendRedirect("loginView.jsp");
+	}
+%>
+<br/>
+<br/>
+<jsp:include page="header.jsp"></jsp:include>
+<br/>
+<br/>
+<br/>
 	
 	<%
 	
@@ -18,7 +31,7 @@
 	String rollNumber =request.getParameter("rollNumber");
 	String department =request.getParameter("department");
 	String lab =request.getParameter("lab");
-	String maxAudience =request.getParameter("maxAudience");
+	int maxAudience =Integer.parseInt(request.getParameter("maxAudience"));
 	String eventStartDate =request.getParameter("eventStartDate");
 	String eventStartTime =request.getParameter("eventStartTime");
 
@@ -26,7 +39,6 @@
 	String eventEndTime =request.getParameter("eventEndTime");
 
 	String eventPurpose =request.getParameter("eventPurpose");
-	String undertaking =request.getParameter("undertaking");
 	
 		session.setAttribute("name", name);
 		session.setAttribute("rollNumber", rollNumber);
@@ -82,10 +94,6 @@
 				<label>Event Purpose: <%= eventPurpose %></label>
 			</div>
 			
-			<div class="row">
-				<label>Undertaking: <%= undertaking %></label>
-			</div>
-			
 			
 			<div class="row">
 					<a  class="btn btn-outline-warning" href="raisePermission" role="button">Confirm</a>
@@ -93,5 +101,6 @@
 			</div>
 			
 		</div>
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

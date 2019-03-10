@@ -47,6 +47,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("user_id", user_id);
 				session.setAttribute("email", email);
 				session.setAttribute("name", name);
+				session.setAttribute("type", type);
 				session.setAttribute("dept", dept);
 				
 				//If the user is faculty incharge then show faculty incharge home page

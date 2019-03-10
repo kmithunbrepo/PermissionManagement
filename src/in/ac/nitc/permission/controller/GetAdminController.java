@@ -10,12 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
-
-import com.sun.xml.internal.bind.v2.model.core.ID;
-import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLService;
-
 import in.ac.nitc.permission.model.Permission;
+import in.ac.nitc.permission.dbconnection.*;
 
 /**
  * Servlet implementation class GetAdminController
@@ -30,28 +26,28 @@ public class GetAdminController extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String choice= request.getParameter("choice");
 		
-		PermissionDaoR permissionDao= new PermissionDaoR();
+		PermissionDataDao permissionDao= new PermissionDataDao();
 		
-		ArrayList<PermissionR> list= permissionDao.getObject(choice);
+		ArrayList<Permission> list= permissionDao.getObject(choice);
 		
 		request.setAttribute("permission_list",list);
 		if(choice.equals("lab_admin"))
 		{
-			RequestDispatcher rDispatcher = request.getRequestDispatcher("admin_viewraised.jsp");
+			RequestDispatcher rDispatcher = request.getRequestDispatcher("adminViewRaised.jsp");
 			rDispatcher.forward(request, response);
 		}else if(choice.equals("approved")){
-			RequestDispatcher rDispatcher = request.getRequestDispatcher("admin_viewapproved.jsp");
+			RequestDispatcher rDispatcher = request.getRequestDispatcher("adminViewApproved.jsp");
 			rDispatcher.forward(request, response);
 		}else if(choice.equals("faculty_incharge")){
-			RequestDispatcher rDispatcher = request.getRequestDispatcher("faculty_viewraised.jsp");
+			RequestDispatcher rDispatcher = request.getRequestDispatcher("facultyViewRaised.jsp");
 			rDispatcher.forward(request, response);
 			
 		}else if(choice.equals("pending")){
-			RequestDispatcher rDispatcher = request.getRequestDispatcher("faculty_viewpending.jsp");
+			RequestDispatcher rDispatcher = request.getRequestDispatcher("facultyViewPending.jsp");
 			rDispatcher.forward(request, response);
 			
 		}else if(choice.equals("declined")){
-			RequestDispatcher rDispatcher = request.getRequestDispatcher("faculty_viewdeclined.jsp");
+			RequestDispatcher rDispatcher = request.getRequestDispatcher("facultyViewDeclined.jsp");
 			rDispatcher.forward(request, response);
 			
 		}

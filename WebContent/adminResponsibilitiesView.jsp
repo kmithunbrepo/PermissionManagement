@@ -13,6 +13,20 @@ body {
 </style>
 </head>
 <body>
+<%
+	response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+	//response.setHeader("Pragma", "no-cache");
+	//response.setHeader("Expires", "0");
+	
+	if(session.getAttribute("email")==null){
+		response.sendRedirect("loginView.jsp");
+	}
+%>
+<br/>
+<br/>
+<jsp:include page="header.jsp"></jsp:include>
+<br/>
+<br/>
 	<h1>Admin Duty</h1>
 	<form action="getAdmin">
   		<input type="radio" name="choice" value="lab_admin"> View Raised Permissions <br> 
@@ -22,5 +36,9 @@ body {
     	<!--It will goto servlet page "admin_view with data "approved"   -->
   		<input type="submit">
 	</form> 
+	<div >
+	    <h1><a href="studentLabAdminView.jsp">Back</a></h1>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

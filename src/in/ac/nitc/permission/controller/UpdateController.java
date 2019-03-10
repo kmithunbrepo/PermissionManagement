@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
-import in.ac.nitc.permission.model.Permission;
+import in.ac.nitc.permission.dbconnection.PermissionDataDao;
 
 /**
  * Servlet implementation class UpdateController
@@ -29,14 +27,14 @@ public class UpdateController extends HttpServlet {
 		System.out.println("Hi new one");
 		System.out.println("Event id=="+id);
 		
-		PermissionDaoR permissionDao = new PermissionDaoR();
+		PermissionDataDao permissionDao = new PermissionDataDao();
 		permissionDao.updateStatus(id, status);
 		if(status.equals("faculty_incharge"))
 		{
 			RequestDispatcher rDispatcher = request.getRequestDispatcher("index.jsp");
 			rDispatcher.forward(request, response);
 		}else{
-			RequestDispatcher rDispatcher = request.getRequestDispatcher("faculty_index.jsp");
+			RequestDispatcher rDispatcher = request.getRequestDispatcher("facultyInchargeView.jsp");
 			rDispatcher.forward(request, response);
 		}
 

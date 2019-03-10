@@ -1,6 +1,10 @@
 package in.ac.nitc.permission.dbconnection;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import in.ac.nitc.permission.model.Permission;
 public class PermissionDataDao {
@@ -19,14 +23,14 @@ public class PermissionDataDao {
 			}
 			
 			//data to insert
-			String studentName=pd.getStudentName();
-			String studentRollNumber=pd.getStudentRollNumber();
-			String department=pd.getDepartment();
+			String student_name=pd.getStudentName();
+			String student_rollno=pd.getStudentRollno();
+			String dept=pd.getDept();
 			String lab=pd.getLab();
-			String maxAudience=pd.getMaxAudience();
-			String eventStartDateTime=pd.getEventStartDateTime();
-			String eventEndDateTime=pd.getEventEndDateTime();
-			String eventPurpose=pd.getEventPurpose();
+			int max_audience=pd.getMaxAudience();
+			String start_datetime=pd.getStartDatetime();
+			String end_datetime=pd.getEndDatetime();
+			String purpose=pd.getPurpose();
 			
 			//getting room_number as it is unique in Lab table 
 			String labRoom="";
@@ -62,14 +66,14 @@ public class PermissionDataDao {
 					+ "raised_datetime,max_audience,lab_id,dept) values(?,?,?,?,?,now(),?,?,?)";
 			
 			PreparedStatement pst=conn.prepareStatement(query);
-			pst.setString(1,eventStartDateTime);
-			pst.setString(2,eventEndDateTime);
-			pst.setString(3,eventPurpose);
-			pst.setString(4,studentRollNumber);
-			pst.setString(5,studentName);
-			pst.setString(6,maxAudience);
+			pst.setString(1,start_datetime);
+			pst.setString(2,end_datetime);
+			pst.setString(3,purpose);
+			pst.setString(4,student_rollno);
+			pst.setString(5,student_name);
+			pst.setInt(6,max_audience);
 			pst.setInt(7,lab_id);
-			pst.setString(8,department);
+			pst.setString(8,dept);
 
 			
 			int count=pst.executeUpdate();
@@ -89,4 +93,73 @@ public class PermissionDataDao {
 		
 		return false;
 	}
+	public ArrayList<Permission> getObject(String choice)
+	{
+
+		ArrayList<Permission> list = new ArrayList<Permission>();
+		DBConnection dbCon=new DBConnection();
+		try{
+			Connection connection = dbCon.getDBConnection();
+			Statement statement = connection.createStatement();
+			String query = "select * from Permission where status="+ "'" + choice + "'";
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			while(resultSet.next()){
+				Permission perm=new Permission();
+				perm.setEventId(resultSet.getInt(1));
+				perm.setStartDatetime(resultSet.getString(2));
+				perm.setEndDatetime(resultSet.getString(3));
+				perm.setPurpose(resultSet.getString(4));
+				perm.setStudentRollno(resultSet.getString(5));
+				perm.setStudentName(resultSet.getString(6));
+				perm.setRaisedDatetime(resultSet.getString(7));
+				perm.setResponseDatetime(resultSet.getString(8));
+				perm.setStatus(resultSet.getString(9));
+				perm.setLabId(resultSet.getInt(10));
+				perm.setMaxAudience(resultSet.getInt(11));
+					
+				list.add(perm);
+			}		
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		finally {
+			dbCon.closeDBConnection();
+		}
+			
+		return list;
+	}
+	public void updateStatus(int id,String status)
+	{
+		try{
+			DBConnection dbCon=new DBConnection();
+			Connection connection = dbCon.getDBConnection();
+			Statement statement = connection.createStatement();
+			String query1 = "update Permission set status='"+status+"' where event_id="+id;
+			
+			int count1 = statement.executeUpdate(query1);
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Calendar cal = Calendar.getInstance();
+			String current_datetime= dateFormat.format(cal.getTime());
+			
+			String query2 = "update Permission set response_datetime='"+current_datetime+"' where event_id="+id;
+			
+			int count2=statement.executeUpdate(query2);
+			
+			System.out.println(count1 +" count 1 row/s effected.....");
+			System.out.println( count2 +" count2 row/s effected....."+ current_datetime );
+			
+			//ResultSet resultSet = statement.executeQuery(query);
+			
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+	}
+
 }

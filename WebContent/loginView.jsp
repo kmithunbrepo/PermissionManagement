@@ -8,7 +8,25 @@
 <link rel="stylesheet" href="./css/loginStyle.css">
 </head>
 <body>
+	<%
+		response.setHeader("Cache-control", "no-cache,no-store,must-revalidate");
+	//response.setHeader("Pragma", "no-cache");
+	//response.setHeader("Expires", "0");
+	
+		if(session.getAttribute("email")==null){
+			;
+		}
+		else{
+			if(session.getAttribute("type").equals("student"))
+				response.sendRedirect("studentView.jsp");
+			else if(session.getAttribute("type").equals("student_lab_admin"))
+				response.sendRedirect("studentLabAdminView.jsp");
+			else if(session.getAttribute("type").equals("faculty_incharge"))
+				response.sendRedirect("facultyInchargeView.jsp");
+		}
+	%>
 	<jsp:include page="header.jsp"></jsp:include>
+	
 	<div class="loginBox">
 		<form action="login" method="post">
 			<table align="center">
