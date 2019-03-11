@@ -1,15 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>application form</title>
 
-<script src="jQuery/jquery.min.js"></script>
+
 
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+<style>
+#submitbtn:hover{
+			background-color:orange;
+		}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#endDate").change(function(){
+	  var startDate = document.getElementById("startDate").value;
+	    var endDate = document.getElementById("endDate").value;
+
+	    if ((Date.parse(startDate) > Date.parse(endDate))) {
+	        alert("Event End date should be After or equal to Start date");
+	        document.getElementById("endDate").value = "";
+	    }
+  });
+  $("#startDate").change(function(){
+	  var startDate = document.getElementById("startDate").value;
+	    var currDate = new Date();
+	    
+	    if ((Date.parse(currDate) > Date.parse(startDate))) {
+	        alert("Event start date should be After or equal to today ");
+	        document.getElementById("startDate").value = "";
+	    }
+  });
+});
+</script>
 </head>
 <body>
 <%
@@ -80,12 +110,18 @@
 	                  <label class="control-label col-md-4" >Event Start Date</label>
 	                  <label class="control-label col-md-4" >Event Start Time </label>
 	         </div>
+	         <%	Date myDate = new Date();
+               	String currDate=new SimpleDateFormat("yyyy-MM-dd").format(myDate);
+                SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm");
+                String time = localDateFormat.format(new Date());
+             %>
+             
 	         <div class="row form-group">
 	               	<div class="col-md-4">
-	                  <input class="form-control"type="date" name="eventStartDate" required />
+	                  <input class="form-control"type="date" name="eventStartDate" value="<%=currDate%>" id="startDate" required />
 	                </div>
 	                 <div class="col-md-4">
-	                  <input class="form-control"type="time" name="eventStartTime" required />
+	                  <input class="form-control"type="time" name="eventStartTime" value="<%=time%>" required />
 	                </div>
              </div>
                
@@ -95,10 +131,11 @@
 	         </div>
 	         <div class="row form-group">
 	               	<div class="col-md-4">
-	                  <input class="form-control"type="date" name="eventEndDate" required />
+	               	
+	                  <input class="form-control"type="date" name="eventEndDate" value="" id="endDate" required />
 	                </div>
 	                 <div class="col-md-4">
-	                  <input class="form-control"type="time" name="eventEndTime" required />
+	                  <input class="form-control"type="time" name="eventEndTime" value="<%=time%>" required />
 	                </div>
              </div>
              
@@ -118,7 +155,7 @@
              
            	<div class="row form-group">
                 <div class="col-md-8 col-sm-offset-4">
-                  <button type="submit" class="btn btn-default" name="submit">Submit</button>
+                  <button id="submitbtn" type="submit" class="btn btn-default" name="submit">Submit</button>
                 </div>
             </div>
 		              	  

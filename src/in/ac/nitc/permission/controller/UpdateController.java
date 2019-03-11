@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.ac.nitc.permission.dbconnection.PermissionDataDao;
+import in.ac.nitc.permission.model.AuthorityIncharge;
+import in.ac.nitc.permission.model.Permission;
 
 /**
  * Servlet implementation class UpdateController
@@ -27,8 +28,11 @@ public class UpdateController extends HttpServlet {
 		System.out.println("Hi new one");
 		System.out.println("Event id=="+id);
 		
-		PermissionDataDao permissionDao = new PermissionDataDao();
-		permissionDao.updateStatus(id, status);
+		AuthorityIncharge obj = new AuthorityIncharge();
+		obj.updateRaisedPermission(id, status);
+		//PermissionDataDao permissionDao = new PermissionDataDao();
+		//Permission p = new Permission();
+		//p.updateStatus(id, status);
 		if(status.equals("faculty_incharge"))
 		{
 			RequestDispatcher rDispatcher = request.getRequestDispatcher("index.jsp");

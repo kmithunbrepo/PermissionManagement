@@ -13,7 +13,7 @@
 
     <div id = "header">
 
-      <div id="logo">
+      <div id="logo" style="position:center;">
       <img src = "img/nitclogo.png" alt = "image not avilable" style = "width:4%;height :5%">
           <h1><a href="index.jsp" id="logo_text1">NITC<span id="logo_text2"> Permission Flow Management System</span></a></h1>
           &nbsp;&nbsp;
@@ -24,7 +24,7 @@
         <ul id="menu">
           <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/events.jsp">Events Requested</a></li>
-          <li><a href="${pageContext.request.contextPath}/venueDetailsView.jsp">Venue Details</a></li>
+          <li><a href="${pageContext.request.contextPath}/venueDetailsView.jsp">Available Labs</a></li>
           <li><a href="contact.jsp">Contact Us</a></li>
           <%
 			if(session.getAttribute("email")==null){

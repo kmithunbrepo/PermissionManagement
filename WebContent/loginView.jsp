@@ -39,8 +39,8 @@
 			<tr>
 				<td></td><td><input type="submit" value="Login"/></td>
 			</tr>
-			<tr><td/><td colspan="2"><a href="#">Forgot password?</a></td>
-			</tr>
+			<!-- <tr><td/><td colspan="2"><a href="#">Forgot password?</a></td>
+			</tr>-->
 		</table>
 		
 	</form>

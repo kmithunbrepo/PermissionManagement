@@ -30,12 +30,14 @@ body {
 <br/>
 
 <h1>Welcome faculty index page</h1>
-	<form action="getAdmin">
-  <input type="radio" name="choice" value="faculty_incharge" checked><b>View Raised Permissions</b> <br> 
-    <input type="radio" name="choice" value="pending"><b> View On-Hold Permissions</b> <br> 
-    <input type="radio" name="choice" value="declined"> <b>View Rejected Permissions</b> <br> 
-  <input type="radio"  name="choice" value="approved"><b>Approved permissions</b><br>
-  <input type="submit">
-  </form>
+	<div>
+		<ul style="list-style-type: none;">
+			<li><a href="getAdmin?choice=faculty_incharge">Show Raised Permission</a></li>
+			<li><a href="getAdmin?choice=pending">Show On-Hold Permission</a></li>
+			<li><a href="getAdmin?choice=declined">Show Rejected Permission</a></li>
+			<li><a href="getAdmin?choice=approved">Show Approved Permission</a></li>
+		</ul>
+	</div>
+  
 </body>
 </html>

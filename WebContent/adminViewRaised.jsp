@@ -36,14 +36,13 @@ th,td{
 <h1  style="text-align:center;"> Admin view of Raised Permission</h1>
  <table cellspacing="20">
  <tr style="margin: 5px">
-    <th>Event Id</th>
+ 	<th>Purpose</th>
     <th>Start Date time</th>
     <th>End Date Time</th>
-    <th>Purpose</th>
+    
     <th>Student RollNo</th>
     <th>Student Name</th>
     <th>Raised Date Time</th>
-       <th>Last Responsed Date Time</th>
     <th>Permission Status</th>
     <th>Lab Id</th>
     <th>No of Audience</th>
@@ -59,14 +58,13 @@ th,td{
 		%>
 		
   <tr style="margin: 5px">
-    <td><%= obj.getEventId() %></td>
+  	<td><%=obj.getPurpose() %></td>
     <td><%= obj.getStartDatetime() %></td>
     <td><%=obj.getEndDatetime() %></td>
-    <td><%=obj.getPurpose() %></td>
+   
     <td><%=obj.getStudentRollno() %></td>
     <td><%=obj.getStudentName()  %></td>
     <td><%=obj.getRaisedDatetime()  %></td>
-   <td><%=obj.getResponseDatetime()  %></td>
     <td><%=obj.getStatus()  %></td>
     <td><%=obj.getLabId()  %></td>
     <td><%=obj.getMaxAudience()  %></td>
@@ -85,7 +83,7 @@ th,td{
 %>
 </table>
 	<div >
-	    <h1><a href="adminResponsibilitiesView.jsp">Back</a></h1>
+	    <h1><a href="studentLabAdminView.jsp">Back</a></h1>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

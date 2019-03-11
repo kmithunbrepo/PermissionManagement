@@ -26,9 +26,10 @@ public class GetAdminController extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String choice= request.getParameter("choice");
 		
-		PermissionDataDao permissionDao= new PermissionDataDao();
+		//PermissionDataDao permissionDao= new PermissionDataDao();
+		Permission p =new Permission();
 		
-		ArrayList<Permission> list= permissionDao.getObject(choice);
+		ArrayList<Permission> list= p.getObject(choice);
 		
 		request.setAttribute("permission_list",list);
 		if(choice.equals("lab_admin"))

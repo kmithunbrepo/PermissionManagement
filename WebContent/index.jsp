@@ -29,7 +29,7 @@
     <br>
     <br>
     
-      <img src='img/3.jpeg'>
+      <img src='img/home.jpeg'>
       
       
        <br>

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import in.ac.nitc.permission.dbconnection.PermissionDataDao;
 import in.ac.nitc.permission.model.Permission;
+import in.ac.nitc.permission.model.Student;
 
 /**
  * Servlet implementation class RaisePermission
@@ -46,6 +46,7 @@ public class RaisePermission extends HttpServlet {
 			
 
 			Permission pd=new Permission();
+			
 
 			pd.setDept(department);
 			pd.setEndDatetime(eventEndDateTime);
@@ -56,8 +57,12 @@ public class RaisePermission extends HttpServlet {
 			pd.setStudentName(studentName);
 			pd.setStudentRollno(studentRollNumber);
 			
-			PermissionDataDao dao=new PermissionDataDao();
-			boolean result=dao.insertPermissionData(pd);
+			
+			Student s1=new Student();
+			boolean result = s1.raisePermission(pd);
+			//PermissionDataDao dao=new PermissionDataDao();
+			//Permission p=new Permission();
+			//boolean result=p.insertPermissionData(pd);
 			
 			if(!result){
 				PrintWriter out=response.getWriter();

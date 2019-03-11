@@ -103,7 +103,7 @@ CREATE TABLE `Permission` (
   KEY `booked_lab_id` (`lab_id`),
   CONSTRAINT `Permission_ibfk_1` FOREIGN KEY (`student_rollno`) REFERENCES `Student` (`rollno`),
   CONSTRAINT `Permission_ibfk_2` FOREIGN KEY (`lab_id`) REFERENCES `Lab` (`lab_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +112,7 @@ CREATE TABLE `Permission` (
 
 LOCK TABLES `Permission` WRITE;
 /*!40000 ALTER TABLE `Permission` DISABLE KEYS */;
-INSERT INTO `Permission` VALUES (1,'2019-03-11 12:00:00','2019-03-11 16:00:00','Get in touch with Linux','m170348ca','mithun kumar','2019-03-10 15:37:36','2019-03-10 16:05:59','approved',1,30,'cse'),(2,'2019-03-12 11:00:00','2019-03-12 14:00:00','Learn Basic of C++','m170364ca','lokeshvar kumar','2019-03-10 15:39:04',NULL,'lab_admin',2,35,'cse'),(3,'2019-03-16 14:00:00','2019-03-16 17:00:00','Blockchain Introduction','m170345ca','rupesh kumar sahu','2019-03-10 15:40:20',NULL,'lab_admin',1,39,'cse'),(4,'2019-03-17 13:00:00','2019-03-17 15:00:00','Android Workshop','m170564ca','sanjib kumar giri','2019-03-10 15:42:30','2019-03-10 16:08:10','pending',2,23,'cse');
+INSERT INTO `Permission` VALUES (1,'2019-03-11 12:00:00','2019-03-11 16:00:00','Get in touch with Linux','m170348ca','mithun kumar','2019-03-10 15:37:36','2019-03-10 16:05:59','approved',1,30,'cse'),(2,'2019-03-12 11:00:00','2019-03-12 14:00:00','Learn Basic of C++','m170364ca','lokeshvar kumar','2019-03-10 15:39:04','2019-03-10 23:41:04','approved',2,35,'cse'),(3,'2019-03-16 14:00:00','2019-03-16 17:00:00','Blockchain Introduction','m170345ca','rupesh kumar sahu','2019-03-10 15:40:20','2019-03-11 17:17:37','pending',1,39,'cse'),(4,'2019-03-17 13:00:00','2019-03-17 15:00:00','Android Workshop','m170564ca','sanjib kumar giri','2019-03-10 15:42:30','2019-03-10 22:54:37','declined',2,23,'cse'),(5,'2019-03-15 11:11:00','2019-03-18 16:00:00','Android','m170348ca','mithun kumar','2019-03-10 22:52:26','2019-03-10 22:55:12','approved',2,15,'cse'),(6,'2019-03-14 04:04:00','2020-03-11 14:21:00','Sanjib    hiii','m170348ca','mithun kumar','2019-03-10 23:26:23','2019-03-11 10:27:45','approved',2,111,'cse'),(7,'2019-03-12 12:00:00','2019-03-12 16:00:00','learning c','m170348ca','mithun kumar','2019-03-11 11:51:38','2019-03-11 12:00:24','declined',2,15,'cse'),(8,'2019-03-14 12:00:00','2019-03-14 14:00:00','Intro to CPP','m170345ca','rupesh kumar sahu','2019-03-11 13:12:37','2019-03-11 14:35:02','approved',1,38,'cse'),(9,'2019-03-16 13:10:00','2019-03-17 16:00:00','Github workshop','m170364ca','lokeshvar kumar','2019-03-11 13:56:59','2019-03-11 14:06:43','approved',2,21,'cse'),(10,'2019-03-12 16:00:00','2019-03-12 19:00:00','Intro to MySQL','m170345ca','rupesh kumar sahu','2019-03-11 18:48:13',NULL,'lab_admin',1,38,'cse'),(11,'2019-03-11 19:48:00','2019-03-12 19:48:00','Intro to JSP','m170564ca','sanjib kumar giri','2019-03-11 19:48:33','2019-03-11 19:49:19','pending',1,10,'cse');
 /*!40000 ALTER TABLE `Permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-10 16:14:35
+-- Dump completed on 2019-03-11 19:53:53

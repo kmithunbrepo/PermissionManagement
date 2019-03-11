@@ -7,6 +7,16 @@
 <title>permission</title>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<style>
+	#confirmlink{
+		color:black;
+		border-color:black;
+	}
+	#confirmlink:hover{
+		color:black;
+		background-color:orange;
+	}
+</style>
 </head>
 <body>
 <%
@@ -93,10 +103,12 @@
 			<div class="row">
 				<label>Event Purpose: <%= eventPurpose %></label>
 			</div>
-			
+			<br/>
+			<br/>
 			
 			<div class="row">
-					<a  class="btn btn-outline-warning" href="raisePermission" role="button">Confirm</a>
+					<a  id="confirmlink" class="btn btn-outline-warning" href="raisePermission" role="button">Confirm</a>
+					&nbsp;&nbsp;
 					<a class="btn btn-outline-dark" href="raisePermissionView.jsp" role="button">Back</a>
 			</div>
 			

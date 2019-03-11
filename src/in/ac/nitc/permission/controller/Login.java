@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +15,47 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import in.ac.nitc.permission.dbconnection.DBConnection;
+import in.ac.nitc.permission.model.User;
 
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
+	//Method for validating or authenticating user
+	public String checkAuthentication(String email,String pass) {
+		DBConnection dbCon=new DBConnection();
+		Connection con=dbCon.getDBConnection();
+		String query="select * from User where email=? and password=?";
+		PreparedStatement st;
+		ResultSet rs;
+		try {
+			st=con.prepareStatement(query);
+			st.setString(1, email);
+			st.setString(2, pass);
+			rs=st.executeQuery();
+			//check for user authentication
+			if(rs.next()) {
+				String type=rs.getString("type");
+				return type;
+			}
+			else 
+				return null;
+		}
+	
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			dbCon.closeDBConnection();
+		}
+		return null;
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* Fetching data from Login form */
 		String email=request.getParameter("email");
 		String pass=request.getParameter("pass");
+		
+		//Calling method for user Authentication
 		
 		//Creating database connection
 		DBConnection dbCon=new DBConnection();

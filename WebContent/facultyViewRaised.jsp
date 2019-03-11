@@ -39,10 +39,10 @@ th,td{
 	<h1 style="text-align:center;"> Faculty view of Raised Permission</h1>
  	<table cellspacing="20">
 		<tr style="margin: 5px">
-		    <th>Event Id</th>
+		    <th>Purpose</th>
 		    <th>Start Date time</th>
 		    <th>End Date Time</th>
-		    <th>Purpose</th>
+		    
 		    <th>Student RollNo</th>
 		    <th>Student Name</th>
 		    <th>Raised Date Time</th>
@@ -61,10 +61,10 @@ th,td{
 	%>
 		
   		<tr style="margin: 5px">
-		    <td><%= obj.getEventId() %></td>
+		    <td><%=obj.getPurpose() %></td>
 		    <td><%= obj.getStartDatetime() %></td>
 		    <td><%=obj.getEndDatetime() %></td>
-		    <td><%=obj.getPurpose() %></td>
+		    
 		    <td><%=obj.getStudentRollno() %></td>
 		    <td><%=obj.getStudentName()  %></td>
 		    <td><%=obj.getRaisedDatetime()  %></td>
@@ -81,7 +81,7 @@ th,td{
 			<option value="declined">Reject</option>
 			<option value="approved">Approve</option>
 			</select>
-			<input type="submit">
+			<input type="submit" value="Apply Action">
 			</form> 
 			</td>
   		</tr>

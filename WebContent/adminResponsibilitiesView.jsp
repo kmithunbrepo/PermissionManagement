@@ -29,12 +29,12 @@ body {
 <br/>
 	<h1>Admin Duty</h1>
 	<form action="getAdmin">
-  		<input type="radio" name="choice" value="lab_admin"> View Raised Permissions <br> 
+  		<input type="radio" name="choice" value="lab_admin" checked> Show Raised Permissions <br> 
   		<!--It will goto servlet page "admin_view with data "lab_admin"   -->
   
-  		<input type="radio"  name="choice" value="approved">Approved permissions<br>
+  		<input type="radio"  name="choice" value="approved">Show Approved permissions<br>
     	<!--It will goto servlet page "admin_view with data "approved"   -->
-  		<input type="submit">
+  		<input type="submit" value="Submit">
 	</form> 
 	<div >
 	    <h1><a href="studentLabAdminView.jsp">Back</a></h1>

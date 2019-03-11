@@ -36,14 +36,14 @@ th,td{
 	<h1 style="text-align:center;"> View of Rejected Permissions</h1>
 	<table cellspacing="20">
 		<tr style="margin: 5px">
-		    <th>Event Id</th>
+		    <th>Purpose</th>
 		    <th>Start Date time</th>
 		    <th>End Date Time</th>
-		    <th>Purpose</th>
+		    
 		    <th>Student RollNo</th>
 		    <th>Student Name</th>
 		    <th>Raised Date Time</th>
-		         <th>Last Responsed Date Time</th>
+		    <th>Last Responsed Date Time</th>
 		    <th>Permission Status</th>
 		    <th>Lab Id</th>
 		    <th>No of Audience</th>
@@ -57,10 +57,10 @@ th,td{
 		%>
 			
 		  <tr style="margin: 5px">
-		    <td><%= obj.getEventId() %></td>
+		  	<td><%=obj.getPurpose() %></td>
 		    <td><%= obj.getStartDatetime() %></td>
 		    <td><%=obj.getEndDatetime() %></td>
-		    <td><%=obj.getPurpose() %></td>
+		    
 		    <td><%=obj.getStudentRollno() %></td>
 		    <td><%=obj.getStudentName()  %></td>
 		    <td><%=obj.getRaisedDatetime()  %></td>

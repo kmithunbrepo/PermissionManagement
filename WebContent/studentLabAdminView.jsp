@@ -25,9 +25,18 @@
 		<ul class="nav">
    			<li><a href="${pageContext.request.contextPath}/raisePermissionView.jsp">Raise Permission</a></li>
    			<li><a href="${pageContext.request.contextPath}/studentRequestsView.jsp">View Raised Permissions</a></li>
-   			<li><a href="${pageContext.request.contextPath}/adminResponsibilitiesView.jsp">Admin Responsibilities</a></li>
+   			
 		</ul>
-	</div> 
+	</div>
+	
+	<div style="padding: 5px;float:center">
+		<p><b>Admin Responsibilities</b></p>
+		<ul  class="nav">
+			<li><a href="getAdmin?choice=lab_admin">Show raised Permission Requests</a></li>
+			<li><a href="getAdmin?choice=approved">Show Approved Permission</a>
+		</ul>
+		
+	</div>
 <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

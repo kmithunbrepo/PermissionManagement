@@ -23,8 +23,9 @@ th,td{
 
  <table cellspacing="20">
    <tr style="margin: 5px">
-    <th>Booked Lab</th>
     <th>Purpose</th>
+    <th>Booked Lab</th>
+    
     <th>Start Date & Time</th>
     <th>End Date & Time</th>
     <th>No of Audience</th>
@@ -51,8 +52,9 @@ th,td{
   %>
 
   <tr style="margin: 5px">
-			    <td><%=lab_name %></td>
 			    <td><%=rs.getString("purpose") %></td>
+			    <td><%=lab_name %></td>
+			    
 			    <td><%=rs.getString("start_datetime") %></td>
 			    <td><%=rs.getString("end_datetime") %></td>
 			    <td><%=rs.getInt("max_audience") %></td>
